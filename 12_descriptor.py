@@ -6,6 +6,7 @@ Date: 2026/2/2 11:06
 File: 12_descriptor.py
 '''
 """
+方法一：单纯通过描述符方式
 class Typed:
     def __init__(self, expected_type):
         self.expected_type = expected_type
@@ -31,7 +32,9 @@ try:
     p.age = "twenty-five"  # 会抛出 TypeError 异常
 except TypeError as e:
     print(e)
-以下通过描述符以及装饰器来实现对用户数据进行类型校验；
+    
+方法二：    
+通过描述符以及装饰器来实现对用户数据进行类型校验；
 装饰器定义好类的属性类型，实例化时会在装饰器中校验People的name类型以及age类型
 """
 class Typed:
