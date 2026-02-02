@@ -22,10 +22,10 @@ class Typed:
         instance.__dict__[self.key] = value
 
 def deco(**kwargs):
-    def wrapper(obj):
+    def wrapper(cls):
         for key, val in kwargs.items():
-            setattr(obj, key, Typed(key, val))
-        return obj
+            setattr(cls, key, Typed(key, val))    # 为类增加了name = Typed('name', str), age = Typed('age', int)
+        return cls
     return wrapper
 
 @deco(name=str, age=int)
@@ -37,5 +37,5 @@ class People:
         self.age = age
 
 p1 = People('louis', 18)
-# print(p1.__dict__)  # {'name': 'louis', 'age': 18}
-# p2 = People('scar', '24')  # TypeError: Invalid data type, pls check
+print(p1.__dict__)  # {'name': 'louis', 'age': 18}
+p2 = People('scar', '24')  # TypeError: Invalid data type, pls check
