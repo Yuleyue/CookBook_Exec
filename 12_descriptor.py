@@ -59,7 +59,7 @@ def deco(**kwargs):
 
 # 类在定义时就被装饰器处理了，并没有实例化再处理，这是因为装饰器在Python中是在定义时即可执行的，不需要等到类的实例被创建
 # 通过deco装饰器，类People在定义时就被动态地添加了新的类属性：name = Typed('name', str), age = Typed('age', int)共两个类实例
-@deco(name=str, age=int)
+@deco(name=str, age=int)            # **kwargs: {'name':str, 'age':int}
 class People:                       # equal to: People_obj = deco(name=str, age=int)(People)
     # name = Typed('name', str)
     # age = Typed('age', int)
